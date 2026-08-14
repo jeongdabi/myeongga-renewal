@@ -7,248 +7,35 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Noto+Serif+KR:wght@500;600;700;900&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --olive:#3d4526;        /* 진한 올리브 (상단바·특가·브랜드) */
-    --olive-2:#4a5330;
-    --olive-ink:#2c331d;    /* 브랜드 글자 */
-    --cream:#f4f1e6;        /* 크림 배경 */
-    --cream-2:#efe9d8;
-    --line:#e6e2d4;         /* 구분선 */
-    --ink:#26261f;          /* 본문 */
-    --sub:#6f6a5c;          /* 보조 텍스트 */
-    --red:#c0392b;          /* 장바구니 뱃지 */
-    --sale:#2f6b3a;         /* 할인율 */
-    --serif:"Noto Serif KR", "Nanum Myeongjo", "Apple SD Gothic Neo", serif;
-    --sans:"Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-  }
-  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
-  html,body{margin:0}
-  body{
-    font-family:var(--sans); color:var(--ink);
-    background:#d9d6cb; /* 데스크탑에서 폰 프레임 밖 배경 */
-    display:flex; justify-content:center;
-    min-height:100vh;
-  }
-
-  /* ===== 모바일 프레임 ===== */
-  .phone{
-    position:relative;
-    width:100%; max-width:430px;
-    background:#fff;
-    min-height:100vh;
-    box-shadow:0 0 40px rgba(0,0,0,.18);
-    overflow:hidden;
-  }
-
-  /* ===== 상단 안내바 ===== */
-  .topbar{
-    background:var(--olive); color:#f3efe2;
-    text-align:center; font-size:14px; font-weight:400;
-    padding:11px 12px; letter-spacing:-.2px;
-  }
-  .topbar b{font-weight:700; color:#fff}
-
-  /* ===== 헤더 ===== */
-  .header{
-    display:flex; align-items:center; gap:10px;
-    padding:14px 16px; background:#fff;
-    border-bottom:1px solid var(--line);
-  }
-  .icon-btn{
-    background:none; border:none; padding:6px; cursor:pointer;
-    display:flex; align-items:center; justify-content:center;
-    color:var(--olive-ink);
-  }
-  .icon-btn svg{display:block}
-  .brand{
-    flex:1; display:flex; align-items:center; justify-content:center; gap:8px;
-    font-family:var(--serif); font-weight:700; font-size:23px;
-    color:var(--olive-ink); letter-spacing:-.5px;
-  }
-  .brand .mark{width:30px; height:30px}
-  .header-right{display:flex; align-items:center; gap:4px}
-  .cart{position:relative}
-  .cart .badge{
-    position:absolute; top:-1px; right:-1px;
-    background:var(--red); color:#fff; font-size:11px; font-weight:700;
-    min-width:18px; height:18px;
-    display:flex; align-items:center; justify-content:center; padding:0 4px;
-    font-family:var(--sans);
-  }
-
-  /* ===== 검색창 ===== */
-  .search{
-    padding:14px 16px 4px;
-  }
-  .search .field{
-    display:flex; align-items:center; gap:10px;
-    background:#f3f2ec; border:1.5px solid #e2ded0;
-    padding:15px 16px;
-  }
-  .search input{
-    flex:1; border:none; background:none; outline:none;
-    font-family:var(--sans); font-size:17px; color:var(--ink);
-  }
-  .search input::placeholder{color:#9a958a}
-
-  /* ===== 상단 탭 ===== */
-  .tabs{
-    display:flex; justify-content:space-between;
-    padding:16px 22px 18px; gap:6px;
-  }
-  .tabs a{
-    font-family:var(--serif); font-weight:600; font-size:18px;
-    color:var(--olive-ink); text-decoration:none; letter-spacing:-.5px;
-  }
-
-  /* ===== 히어로 ===== */
-  .hero{position:relative; height:360px; overflow:hidden; background:#e9e6da}
-  .hero img{width:100%; height:100%; object-fit:cover; display:block}
-  .hero .veil{
-    position:absolute; inset:0;
-    background:linear-gradient(180deg, rgba(0,0,0,0) 38%, rgba(20,25,10,.72) 100%);
-  }
-  .hero .copy{
-    position:absolute; left:22px; right:22px; bottom:22px; color:#fff;
-  }
-  .hero .eyebrow{font-size:15px; opacity:.92; margin:0 0 6px}
-  .hero h2{
-    font-family:var(--serif); font-weight:900; font-size:32px; line-height:1.28;
-    margin:0 0 14px; letter-spacing:-.5px; text-shadow:0 1px 8px rgba(0,0,0,.3);
-  }
-  .hero .go{font-size:15px; font-weight:500; opacity:.95}
-
-  /* ===== 배송 안내 ===== */
-  .delivery{
-    background:var(--cream); text-align:center;
-    padding:22px 20px; border-bottom:1px solid var(--line);
-  }
-  .delivery .row{display:flex; align-items:center; justify-content:center; gap:10px}
-  .delivery .row strong{font-family:var(--serif); font-weight:700; font-size:20px; color:var(--olive-ink)}
-  .delivery p{margin:8px 0 0; color:var(--sub); font-size:15px}
-
-  /* ===== 섹션 공통 ===== */
-  .section{padding:28px 20px}
-  .section > h3{
-    font-family:var(--serif); font-weight:700; font-size:24px;
-    margin:0 0 4px; color:var(--olive-ink); letter-spacing:-.5px;
-  }
-  .section > .desc{margin:0 0 18px; color:var(--sub); font-size:15px}
-
-  /* ===== 카테고리 2x2 ===== */
-  .cat-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px}
-  .cat{
-    position:relative; aspect-ratio:1/1; overflow:hidden;
-    display:flex; align-items:flex-end; padding:14px; color:#fff;
-    text-decoration:none;
-  }
-  .cat .cveil{position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(0,0,0,.5))}
-  .cat span{position:relative; font-family:var(--serif); font-weight:700; font-size:19px; letter-spacing:-.5px}
-  .cat.c1{background:linear-gradient(135deg,#8a6b3a,#5f4a28)}
-  .cat.c2{background:linear-gradient(135deg,#5a6b3a,#3d4a24)}
-  .cat.c3{background:linear-gradient(135deg,#6b5b46,#463a2c)}
-  .cat.c4{background:linear-gradient(135deg,#4a4433,#2f2b20)}
-
-  /* ===== 오늘의 명가 특가 ===== */
-  .special{background:var(--olive); padding:30px 20px 34px}
-  .special h3{font-family:var(--serif); font-weight:700; font-size:24px; color:#fff; margin:0 0 4px}
-  .special .desc{color:#d5d0bd; font-size:15px; margin:0 0 18px}
-  .timer{text-align:center; margin:0 0 22px}
-  .timer .lb{color:#cfc9b6; font-size:14px; margin-bottom:10px}
-  .timer .clock{display:inline-flex; align-items:center; gap:8px; font-family:var(--sans)}
-  .timer .u{
-    background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.2);
-    color:#fff; font-size:26px; font-weight:700;
-    padding:8px 12px; min-width:52px; text-align:center; letter-spacing:1px;
-  }
-  .timer .sep{color:#fff; font-size:24px; font-weight:700}
-  .prod-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px}
-  .prod{background:#fff; overflow:hidden}
-  .prod .thumb{aspect-ratio:1/1; display:flex; align-items:center; justify-content:center; color:#7a6a2e; font-weight:700; font-size:15px}
-  .prod .thumb.corn{background:linear-gradient(135deg,#f6d873,#e3b12f)}
-  .prod .thumb.pumpkin{background:linear-gradient(135deg,#f0a95a,#d97a2b)}
-  .prod .info{padding:12px 12px 14px}
-  .prod .name{font-family:var(--serif); font-weight:600; font-size:16px; color:var(--ink); margin:0 0 6px}
-  .prod .price{display:flex; align-items:baseline; gap:6px; flex-wrap:wrap}
-  .prod .was{color:#a8a397; font-size:13px; text-decoration:line-through}
-  .prod .off{color:var(--sale); font-weight:900; font-size:17px}
-  .prod .now{color:var(--ink); font-weight:900; font-size:17px}
-
-  /* 하단 탭바 자리 확보 */
-  .spacer{height:78px}
-
-  /* ===== 하단 탭바 ===== */
-  .bottomnav{
-    position:sticky; bottom:0; left:0; right:0;
-    display:flex; background:#fff; border-top:1px solid var(--line);
-    padding:8px 0 max(10px, env(safe-area-inset-bottom));
-  }
-  .bottomnav a{
-    flex:1; text-align:center; text-decoration:none; color:var(--sub);
-    font-size:12px; display:flex; flex-direction:column; align-items:center; gap:4px;
-  }
-  .bottomnav a.on{color:var(--olive-ink); font-weight:700}
-  .bottomnav svg{display:block}
-
-  /* ===== 햄버거 메뉴 오버레이 (시안3) ===== */
-  .menu{
-    position:absolute; inset:0; background:#fff; z-index:30;
-    display:flex; flex-direction:column;
-    transform:translateX(-100%); transition:transform .28s ease;
-    overflow-y:auto;
-  }
-  .menu.open{transform:translateX(0)}
-  .menu .login{
-    background:var(--cream); padding:18px 20px; border-bottom:1px solid var(--line);
-  }
-  .menu .login p{margin:0 0 12px; font-size:15px; color:var(--sub)}
-  .menu .login .btns{display:grid; grid-template-columns:1fr 1fr; gap:12px}
-  .menu .login .btns button{
-    font-family:var(--serif); font-weight:700; font-size:19px; color:var(--olive-ink);
-    background:#fff; border:1.5px solid #c9c2ae; padding:16px 0; cursor:pointer;
-  }
-  .menu .mhead{padding:22px 20px 10px; display:flex; align-items:baseline; gap:10px}
-  .menu .mhead h3{font-family:var(--serif); font-weight:700; font-size:26px; color:var(--olive-ink); margin:0; letter-spacing:-.5px}
-  .menu .mhead span{color:var(--sub); font-size:14px}
-  .menu .mgrid{display:grid; grid-template-columns:1fr 1fr}
-  .menu .mgrid a{
-    display:flex; align-items:center; justify-content:space-between;
-    padding:22px 20px; text-decoration:none; color:var(--olive-ink);
-    font-family:var(--serif); font-weight:600; font-size:20px; letter-spacing:-.5px;
-    border-top:1px solid var(--line);
-  }
-  .menu .mgrid a:nth-child(odd){border-right:1px solid var(--line)}
-  .menu .mgrid a .chev{color:#b7b1a1}
-
-  @media (prefers-reduced-motion: reduce){ .menu{transition:none} }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="phone">
 
-  <!-- ===== 홈 화면 ===== -->
+  <!-- ===== 상단 안내바 ===== -->
   <div class="topbar">1초 회원가입하고 <b>무료배송 혜택</b> 받기</div>
 
+  <!-- ===== 헤더 ===== -->
   <header class="header">
     <button class="icon-btn" id="openMenu" aria-label="메뉴 열기">
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
     </button>
-    <div class="brand">
+    <a class="brand" href="index.html">
       <svg class="mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M6 14 16 6l10 8"/><path d="M8 14v11h16V14"/><path d="M8 25h16" /><path d="M13 25v-6h6v6"/></svg>
       명가삼대떡집
-    </div>
+    </a>
     <div class="header-right">
       <button class="icon-btn" aria-label="검색">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
       </button>
-      <button class="icon-btn cart" aria-label="장바구니">
+      <a class="icon-btn cart" href="#" aria-label="장바구니">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
         <span class="badge">2</span>
-      </button>
+      </a>
     </div>
   </header>
 
+  <!-- ===== 검색창 ===== -->
   <div class="search">
     <div class="field">
       <input placeholder="찾으시는 떡을 검색해 보세요" aria-label="검색어 입력">
@@ -256,23 +43,26 @@
     </div>
   </div>
 
+  <!-- ===== 상단 탭 ===== -->
   <nav class="tabs">
-    <a href="#">전체 떡</a>
-    <a href="#">베스트</a>
-    <a href="#">선물·답례</a>
-    <a href="#">대량주문</a>
+    <a href="list.html?cate=23">전체 떡</a>
+    <a href="list.html?cate=59">베스트</a>
+    <a href="list.html?cate=gift">선물·답례</a>
+    <a href="apply.html">대량주문</a>
   </nav>
 
-  <section class="hero">
-    <img src="hero.webp" alt="정직한 우리 떡">
+  <!-- ===== 히어로 ===== -->
+  <a class="hero" href="list.html?cate=23">
+    <img src="hero.webp" alt="정직한 우리 떡" onerror="this.style.display='none'">
     <div class="veil"></div>
     <div class="copy">
       <p class="eyebrow">좋은 원물에서 시작합니다</p>
       <h2>매일 먹어도 좋은<br>정직한 우리 떡</h2>
       <div class="go">간식부터 선물까지, 필요한 떡을 편하게 골라보세요 ›</div>
     </div>
-  </section>
+  </a>
 
+  <!-- ===== 배송 안내 ===== -->
   <section class="delivery">
     <div class="row">
       <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#3d4526" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h11v9H2z"/><path d="M13 10h5l3 3v3h-8z"/><circle cx="6" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
@@ -281,17 +71,19 @@
     <p>상품 상세에서 수령 예상일을 먼저 확인하세요</p>
   </section>
 
+  <!-- ===== 카테고리 2x2 ===== -->
   <section class="section">
     <h3>어떤 떡을 찾으세요?</h3>
     <p class="desc">필요한 자리와 드실 분을 먼저 골라보세요</p>
     <div class="cat-grid">
-      <a class="cat c1" href="#"><div class="cveil"></div><span>아침·간식</span></a>
-      <a class="cat c2" href="#"><div class="cveil"></div><span>부모님께</span></a>
-      <a class="cat c3" href="#"><div class="cveil"></div><span>선물·답례</span></a>
-      <a class="cat c4" href="#"><div class="cveil"></div><span>행사·대량</span></a>
+      <a class="cat c1" href="list.html?cate=snack"><div class="cveil"></div><span>아침·간식</span></a>
+      <a class="cat c2" href="list.html?cate=parents"><div class="cveil"></div><span>부모님께</span></a>
+      <a class="cat c3" href="list.html?cate=gift"><div class="cveil"></div><span>선물·답례</span></a>
+      <a class="cat c4" href="list.html?cate=event"><div class="cveil"></div><span>행사·대량</span></a>
     </div>
   </section>
 
+  <!-- ===== 오늘의 명가 특가 ===== -->
   <section class="special">
     <h3>오늘의 명가 특가</h3>
     <p class="desc">단 하루만 만날 수 있는 마지막 혜택</p>
@@ -303,24 +95,20 @@
         <span class="u" id="ss">01</span>
       </div>
     </div>
-    <div class="prod-grid">
-      <div class="prod"><div class="thumb corn">초당옥수수 설기</div><div class="info"><p class="name">초당옥수수 설기</p><div class="price"><span class="was">28,000원</span><span class="off">34%</span><span class="now">18,500원</span></div></div></div>
-      <div class="prod"><div class="thumb pumpkin">밤호박 설기</div><div class="info"><p class="name">밤호박 설기</p><div class="price"><span class="was">28,000원</span><span class="off">34%</span><span class="now">18,500원</span></div></div></div>
-      <div class="prod"><div class="thumb corn">초당옥수수 설기</div><div class="info"><p class="name">초당옥수수 설기</p><div class="price"><span class="was">28,000원</span><span class="off">34%</span><span class="now">18,500원</span></div></div></div>
-      <div class="prod"><div class="thumb pumpkin">밤호박 설기</div><div class="info"><p class="name">밤호박 설기</p><div class="price"><span class="was">28,000원</span><span class="off">34%</span><span class="now">18,500원</span></div></div></div>
-    </div>
+    <div class="prod-grid" id="specialGrid"><!-- JS 렌더 --></div>
   </section>
 
   <div class="spacer"></div>
 
+  <!-- ===== 하단 탭바 ===== -->
   <nav class="bottomnav">
-    <a href="#" class="on"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11 12 4l8 7"/><path d="M6 10v9h12v-9"/></svg>홈</a>
-    <a href="#"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg>전체상품</a>
-    <a href="#"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 8 12 4l8 4v8l-8 4-8-4Z"/><path d="M4 8l8 4 8-4M12 12v8"/></svg>대량주문</a>
+    <a href="index.html" class="on"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11 12 4l8 7"/><path d="M6 10v9h12v-9"/></svg>홈</a>
+    <a href="list.html?cate=23"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg>전체상품</a>
+    <a href="apply.html"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 8 12 4l8 4v8l-8 4-8-4Z"/><path d="M4 8l8 4 8-4M12 12v8"/></svg>대량주문</a>
     <a href="#"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-6 8-6s8 2 8 6"/></svg>내 정보</a>
   </nav>
 
-  <!-- ===== 햄버거 메뉴 (시안3) ===== -->
+  <!-- ===== 햄버거 메뉴 ===== -->
   <div class="menu" id="menu" aria-hidden="true">
     <div class="topbar">1초 회원가입하고 <b>무료배송 혜택</b> 받기</div>
     <header class="header">
@@ -333,7 +121,7 @@
       </div>
       <div class="header-right">
         <button class="icon-btn" aria-label="검색"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg></button>
-        <button class="icon-btn cart" aria-label="장바구니"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="badge">2</span></button>
+        <a class="icon-btn cart" href="#" aria-label="장바구니"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="badge">2</span></a>
       </div>
     </header>
 
@@ -344,10 +132,10 @@
 
     <div class="mhead"><h3>전체 메뉴</h3><span>찾으시는 메뉴를 선택해 주세요</span></div>
     <nav class="mgrid">
-      <a href="#">전체 떡<span class="chev">›</span></a>
-      <a href="#">인기 상품<span class="chev">›</span></a>
-      <a href="#">선물·답례<span class="chev">›</span></a>
-      <a href="#">대량 주문<span class="chev">›</span></a>
+      <a href="list.html?cate=23">전체 떡<span class="chev">›</span></a>
+      <a href="list.html?cate=59">인기 상품<span class="chev">›</span></a>
+      <a href="list.html?cate=gift">선물·답례<span class="chev">›</span></a>
+      <a href="apply.html">대량 주문<span class="chev">›</span></a>
       <a href="#">이용안내<span class="chev">›</span></a>
       <a href="#">자주묻는 질문<span class="chev">›</span></a>
       <a href="#">문자 주문<span class="chev">›</span></a>
@@ -361,27 +149,13 @@
 
 </div>
 
+<script src="products.js"></script>
+<script src="app.js"></script>
 <script>
-  // 햄버거 메뉴 열고 닫기
-  var menu = document.getElementById('menu');
-  document.getElementById('openMenu').addEventListener('click', function(){
-    menu.classList.add('open'); menu.setAttribute('aria-hidden','false');
-  });
-  document.getElementById('closeMenu').addEventListener('click', function(){
-    menu.classList.remove('open'); menu.setAttribute('aria-hidden','true');
-  });
-
-  // 특가 카운트다운 (시안 느낌용)
-  var total = 2*3600 + 36*60 + 1;
-  var hh=document.getElementById('hh'), mm=document.getElementById('mm'), ss=document.getElementById('ss');
-  function pad(n){return (n<10?'0':'')+n;}
-  setInterval(function(){
-    if(total<=0){ total=2*3600+36*60+1; }
-    total--;
-    hh.textContent=pad(Math.floor(total/3600));
-    mm.textContent=pad(Math.floor((total%3600)/60));
-    ss.textContent=pad(total%60);
-  },1000);
+  // 특가 그리드 렌더 (특가로 지정한 상품번호)
+  renderSpecialGrid('specialGrid', [190, 192, 66, 40]);
+  // 카운트다운
+  startCountdown(2*3600 + 36*60 + 1);
 </script>
 </body>
 </html>

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>상품 상세 · 명가삼대떡집</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Noto+Serif+KR:wght@500;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="phone">
+
+  <div class="topbar">1초 회원가입하고 <b>무료배송 혜택</b> 받기</div>
+
+  <header class="header">
+    <a class="icon-btn back" href="list.html?cate=23" aria-label="뒤로가기">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+    </a>
+    <div class="page-title">상품 상세</div>
+    <div class="header-right">
+      <button class="icon-btn" aria-label="검색"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg></button>
+      <a class="icon-btn cart" href="#" aria-label="장바구니"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="badge">2</span></a>
+    </div>
+  </header>
+
+  <div class="pd-hero" id="pdHero"><!-- 이미지 --></div>
+
+  <div class="pd-body">
+    <div class="pd-badge" id="pdBadge"></div>
+    <h1 class="pd-name" id="pdName">상품명</h1>
+    <div class="pd-price">
+      <span class="off" id="pdRate"></span>
+      <span class="now" id="pdNow">0원</span>
+      <span class="was" id="pdWas">0원</span>
+    </div>
+    <div class="pd-ship">
+      <div><b>배송방법</b> 택배 (무료배송)</div>
+      <div><b>배송기간</b> 결제 확인 후 1~2일 이내 출고</div>
+      <div><b>안내</b> 산간·도서 지역은 추가 배송비가 발생할 수 있습니다</div>
+    </div>
+  </div>
+
+  <div class="pd-form">
+    <label for="pdOption">옵션 선택</label>
+    <select id="pdOption"><option>- 옵션을 선택해 주세요 -</option></select>
+
+    <label>수량</label>
+    <div class="qty">
+      <button type="button" id="qtyMinus" aria-label="수량 감소">−</button>
+      <input id="qtyInput" type="text" inputmode="numeric" value="1" aria-label="수량">
+      <button type="button" id="qtyPlus" aria-label="수량 증가">+</button>
+    </div>
+  </div>
+
+  <section class="pd-detail">
+    <h4>상품 상세 설명</h4>
+    <p>세대를 잇는 정직한 손맛으로 빚어낸 명가삼대떡집의 떡입니다. 좋은 원물을 아낌없이 담아 자극적이지 않고 은은한 단맛과 고소한 풍미를 살렸습니다.</p>
+    <div class="ph">상세 이미지 영역 (상세페이지 콘텐츠가 들어갈 자리)</div>
+  </section>
+
+  <div class="pd-spacer"></div>
+
+  <div class="buybar">
+    <button class="wish" aria-label="관심상품">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.6-9.3-9C1.2 9 2.6 6 5.5 6 7.4 6 8.8 7.2 12 10c3.2-2.8 4.6-4 6.5-4 2.9 0 4.3 3 2.8 6C19 16.4 12 21 12 21Z"/></svg>
+    </button>
+    <button class="cart-btn">장바구니</button>
+    <button class="buy-btn">바로 구매</button>
+  </div>
+
+  <!-- 햄버거 메뉴 (공통) -->
+  <div class="menu" id="menu" aria-hidden="true">
+    <div class="topbar">1초 회원가입하고 <b>무료배송 혜택</b> 받기</div>
+    <header class="header">
+      <button class="icon-btn" id="closeMenu" aria-label="메뉴 닫기">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+      <div class="brand">명가삼대떡집</div>
+      <div class="header-right"></div>
+    </header>
+    <div class="mhead"><h3>전체 메뉴</h3><span>찾으시는 메뉴를 선택해 주세요</span></div>
+    <nav class="mgrid">
+      <a href="list.html?cate=23">전체 떡<span class="chev">›</span></a>
+      <a href="list.html?cate=59">인기 상품<span class="chev">›</span></a>
+      <a href="list.html?cate=gift">선물·답례<span class="chev">›</span></a>
+      <a href="apply.html">대량 주문<span class="chev">›</span></a>
+    </nav>
+  </div>
+
+</div>
+
+<script src="products.js"></script>
+<script src="app.js"></script>
+<script>
+  renderProductDetail();
+  bindQty();
+</script>
+</body>
+</html>

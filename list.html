@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>전체상품 · 명가삼대떡집</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Noto+Serif+KR:wght@500;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="phone">
+
+  <div class="topbar">1초 회원가입하고 <b>무료배송 혜택</b> 받기</div>
+
+  <header class="header">
+    <a class="icon-btn back" href="index.html" aria-label="뒤로가기">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+    </a>
+    <div class="page-title" id="listTitle">전체상품</div>
+    <div class="header-right">
+      <button class="icon-btn" aria-label="검색"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg></button>
+      <a class="icon-btn cart" href="#" aria-label="장바구니"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="badge">2</span></a>
+    </div>
+  </header>
+
+  <nav class="chips" id="chips">
+    <a href="list.html?cate=23" data-cate="23">전체</a>
+    <a href="list.html?cate=59" data-cate="59">베스트</a>
+    <a href="list.html?cate=snack" data-cate="snack">아침·간식</a>
+    <a href="list.html?cate=gift" data-cate="gift">선물·답례</a>
+    <a href="list.html?cate=event" data-cate="event">행사·대량</a>
+  </nav>
+
+  <div class="list-top">
+    <span class="cnt">전체 <b id="listCount">0</b>개</span>
+    <select class="sort" aria-label="정렬">
+      <option>인기순</option>
+      <option>신상품순</option>
+      <option>낮은 가격순</option>
+      <option>높은 가격순</option>
+    </select>
+  </div>
+
+  <div class="list-grid" id="listGrid"><!-- JS 렌더 --></div>
+
+  <div class="spacer"></div>
+
+  <nav class="bottomnav">
+    <a href="index.html"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11 12 4l8 7"/><path d="M6 10v9h12v-9"/></svg>홈</a>
+    <a href="list.html?cate=23" class="on"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg>전체상품</a>
+    <a href="apply.html"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 8 12 4l8 4v8l-8 4-8-4Z"/><path d="M4 8l8 4 8-4M12 12v8"/></svg>대량주문</a>
+    <a href="#"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-6 8-6s8 2 8 6"/></svg>내 정보</a>
+  </nav>
+
+</div>
+
+<script src="products.js"></script>
+<script src="app.js"></script>
+<script>
+  // 카테고리 칩 라벨 매핑
+  var CATE_LABEL = {'23':'전체상품','59':'베스트','snack':'아침·간식','gift':'선물·답례','event':'행사·대량','parents':'부모님께'};
+  var cate = getQuery('cate') || '23';
+  document.getElementById('listTitle').textContent = CATE_LABEL[cate] || '전체상품';
+
+  // 활성 칩 표시
+  var chips = document.querySelectorAll('#chips a');
+  for (var i=0;i<chips.length;i++){ if(chips[i].getAttribute('data-cate')===cate) chips[i].classList.add('on'); }
+
+  // 시안 단계: 베스트만 상위 정렬 노출, 나머지는 전체 노출
+  var list = PRODUCTS.slice();
+  if (cate === '59') list = list.filter(function(p){ return !p.soldout; });
+  renderProductGrid('listGrid', list);
+</script>
+</body>
+</html>
