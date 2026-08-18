@@ -16,30 +16,40 @@
   <div class="topbar">1초 회원가입하고 <b>무료배송 혜택</b> 받기</div>
 
   <!-- ===== 헤더 ===== -->
-  <header class="header">
-    <button class="icon-btn" id="openMenu" aria-label="메뉴 열기">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-    </button>
-    <a class="brand" href="index.html">
-      <svg class="mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M6 14 16 6l10 8"/><path d="M8 14v11h16V14"/><path d="M8 25h16" /><path d="M13 25v-6h6v6"/></svg>
-      명가삼대떡집
-    </a>
-    <div class="header-right">
-      <button class="icon-btn" aria-label="검색">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+  <!-- ===== 상단 고정 영역 (헤더 + 검색창) ===== -->
+  <div class="topfix">
+    <header class="header">
+      <button class="icon-btn" id="openMenu" aria-label="메뉴 열기">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
       </button>
-      <a class="icon-btn cart" href="#" aria-label="장바구니">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
-        <span class="badge">2</span>
+      <a class="brand" href="index.html">
+        <!-- ▼ 명가 로고: src를 실제 로고 URL로 교체하거나 프로젝트에 logo.png 추가. 실패 시 아래 SVG로 자동 폴백 ▼ -->
+        <img class="logo-img" src="myeongga-logo.webp" alt="명가삼대떡집"
+             onerror="this.classList.add('hide'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hide')">
+        <span class="brand-fallback hide">
+          <svg class="mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M6 14 16 6l10 8"/><path d="M8 14v11h16V14"/><path d="M8 25h16" /><path d="M13 25v-6h6v6"/></svg>
+          명가삼대떡집
+        </span>
       </a>
-    </div>
-  </header>
+      <div class="header-right">
+        <button class="icon-btn js-search-toggle" aria-label="검색 열기">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+        </button>
+        <a class="icon-btn cart" href="#" aria-label="장바구니">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+          <span class="badge">2</span>
+        </a>
+      </div>
+    </header>
 
-  <!-- ===== 검색창 ===== -->
-  <div class="search">
-    <div class="field">
-      <input placeholder="찾으시는 떡을 검색해 보세요" aria-label="검색어 입력">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8a857a" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+    <!-- 검색창: 검색 아이콘 누르면 펼쳐짐 -->
+    <div class="searchbar" id="searchbar">
+      <div class="field">
+        <input placeholder="찾으시는 떡을 검색해 보세요" aria-label="검색어 입력">
+        <button class="sb-icon" id="searchClose" aria-label="검색 닫기">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8a857a" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+        </button>
+      </div>
     </div>
   </div>
 
@@ -51,9 +61,12 @@
     <a href="apply.html">대량주문</a>
   </nav>
 
-  <!-- ===== 히어로 ===== -->
+  <!-- ===== 히어로 (명가 메인 롤링배너) ===== -->
   <a class="hero" href="list.html?cate=23">
-    <img src="hero.webp" alt="정직한 우리 떡" onerror="this.style.display='none'">
+    <!-- ▼▼ 아래 src를 명가 관리자 '메인 롤링배너' 이미지 URL로 교체하세요 ▼▼ -->
+    <img src="https://ecimg.cafe24img.com/pg838b47736579015/rhgurwls1/web/product/big/20260427/c14257c61efb9783bcec70bdb2955e29.jpg"
+         alt="정직한 우리 떡" onerror="this.style.display='none'">
+    <!-- ▲▲ 여러 장 롤링 원하면 알려주세요. Swiper로 슬라이드 처리 가능 ▲▲ -->
     <div class="veil"></div>
     <div class="copy">
       <p class="eyebrow">좋은 원물에서 시작합니다</p>
@@ -62,13 +75,22 @@
     </div>
   </a>
 
-  <!-- ===== 배송 안내 ===== -->
-  <section class="delivery">
-    <div class="row">
-      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#3d4526" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h11v9H2z"/><path d="M13 10h5l3 3v3h-8z"/><circle cx="6" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
-      <strong>언제 올지 궁금하신가요?</strong>
-    </div>
-    <p>상품 상세에서 수령 예상일을 먼저 확인하세요</p>
+  <!-- ===== 주문 배너 롤링 (문자→전화, 3초 간격) ===== -->
+  <section class="orderbanner" id="orderBanner" aria-label="주문 안내">
+    <!-- 1번: 문자 주문 -->
+    <a class="ob-slide is-on" href="sms:010-0000-0000">
+      <span class="ob-icon sms" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>
+      </span>
+      <span class="ob-text"><small>문자로 간편하게 주문해보세요</small><b class="num-red">문자 주문으로 이동</b></span>
+    </a>
+    <!-- 2번: 전화 주문·상담 -->
+    <a class="ob-slide" href="tel:1668-1765">
+      <span class="ob-icon tel" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11 11 0 0 0 3.5.56 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.6a1 1 0 0 1 1 1 11 11 0 0 0 .56 3.5 1 1 0 0 1-.25 1L6.6 10.8Z"/></svg>
+      </span>
+      <span class="ob-text"><small>문의할 사항이 있으신가요? 전화 문의</small><b>1668-1765</b></span>
+    </a>
   </section>
 
   <!-- ===== 카테고리 2x2 ===== -->
@@ -76,17 +98,29 @@
     <h3>어떤 떡을 찾으세요?</h3>
     <p class="desc">필요한 자리와 드실 분을 먼저 골라보세요</p>
     <div class="cat-grid">
-      <a class="cat c1" href="list.html?cate=snack"><div class="cveil"></div><span>아침·간식</span></a>
-      <a class="cat c2" href="list.html?cate=parents"><div class="cveil"></div><span>부모님께</span></a>
-      <a class="cat c3" href="list.html?cate=gift"><div class="cveil"></div><span>선물·답례</span></a>
-      <a class="cat c4" href="list.html?cate=event"><div class="cveil"></div><span>행사·대량</span></a>
+      <!-- 각 타일 img src는 원하는 사진(상품/연출컷 URL)으로 교체 가능. 로드 실패 시 배경 그라데이션 -->
+      <a class="cat c1" href="list.html?cate=snack">
+        <img src="https://ecimg.cafe24img.com/pg838b47736579015/rhgurwls1/web/product/big/20260427/c14257c61efb9783bcec70bdb2955e29.jpg" alt="아침·간식" onerror="this.remove()">
+        <div class="cveil"></div><span>아침·간식</span>
+      </a>
+      <a class="cat c2" href="list.html?cate=parents">
+        <img src="https://ecimg.cafe24img.com/pg838b47736579015/rhgurwls1/web/product/big/20260722/a4b45cd52fd0165c1aff6b1ddceda563.png" alt="부모님께" onerror="this.remove()">
+        <div class="cveil"></div><span>부모님께</span>
+      </a>
+      <a class="cat c3" href="list.html?cate=gift">
+        <img src="https://ecimg.cafe24img.com/pg838b47736579015/rhgurwls1/web/product/big/20260729/f781c51d2153a1fb4a4b7ad2e0e296ef.jpg" alt="선물·답례" onerror="this.remove()">
+        <div class="cveil"></div><span>선물·답례</span>
+      </a>
+      <a class="cat c4" href="list.html?cate=event">
+        <img src="https://ecimg.cafe24img.com/pg838b47736579015/rhgurwls1/web/product/big/20260714/63aa9ec43153a8ce3d11d5b5848fd3ee.jpg" alt="행사·대량" onerror="this.remove()">
+        <div class="cveil"></div><span>행사·대량</span>
+      </a>
     </div>
   </section>
 
   <!-- ===== 오늘의 명가 특가 ===== -->
   <section class="special">
     <h3>오늘의 명가 특가</h3>
-    <p class="desc">단 하루만 만날 수 있는 마지막 혜택</p>
     <div class="timer">
       <div class="lb">종료까지 남은 시간</div>
       <div class="clock">
@@ -116,8 +150,12 @@
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
       </button>
       <div class="brand">
-        <svg class="mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M6 14 16 6l10 8"/><path d="M8 14v11h16V14"/><path d="M8 25h16"/><path d="M13 25v-6h6v6"/></svg>
-        명가삼대떡집
+        <img class="logo-img" src="myeongga-logo.webp" alt="명가삼대떡집"
+             onerror="this.classList.add('hide'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hide')">
+        <span class="brand-fallback hide">
+          <svg class="mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M6 14 16 6l10 8"/><path d="M8 14v11h16V14"/><path d="M8 25h16"/><path d="M13 25v-6h6v6"/></svg>
+          명가삼대떡집
+        </span>
       </div>
       <div class="header-right">
         <button class="icon-btn" aria-label="검색"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg></button>
@@ -152,8 +190,8 @@
 <script src="products.js"></script>
 <script src="app.js"></script>
 <script>
-  // 특가 그리드 렌더 (특가로 지정한 상품번호)
-  renderSpecialGrid('specialGrid', [190, 192, 66, 40]);
+  // 특가 그리드 렌더 (SPECIAL_NOS는 products.js에서 관리)
+  renderSpecialGrid('specialGrid', SPECIAL_NOS);
   // 카운트다운
   startCountdown(2*3600 + 36*60 + 1);
 </script>

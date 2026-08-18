@@ -94,6 +94,9 @@ var PRODUCTS = [
     opts:['단호박 시루떡 1호','단호박 시루떡 2호'] }
 ];
 
+// 홈 "오늘의 명가 특가"에 노출할 상품번호 (편집기에서 관리)
+var SPECIAL_NOS = [190, 192, 66, 40];
+
 // 상품번호로 조회
 function findProduct(no) {
   no = Number(no);

@@ -9,7 +9,7 @@
   --sub:#6f6a5c;          /* 보조 텍스트 */
   --red:#c0392b;          /* 장바구니 뱃지 */
   --sale:#2f6b3a;         /* 할인율 */
-  --serif:"Noto Serif KR","Nanum Myeongjo","Apple SD Gothic Neo",serif;
+  --serif:"Noto Serif KR",serif;
   --sans:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
 }
 *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
@@ -28,7 +28,7 @@ body{
   background:#fff;
   min-height:100vh;
   box-shadow:0 0 40px rgba(0,0,0,.18);
-  overflow:hidden;
+  overflow-x:clip; /* 세로 sticky는 살리고 오프캔버스 메뉴만 가로 클리핑 */
 }
 
 /* ===== 상단 안내바 ===== */
@@ -60,12 +60,16 @@ body{
 .header-right{display:flex; align-items:center; gap:4px}
 .cart{position:relative}
 .cart .badge{
-  position:absolute; top:-1px; right:-1px;
-  background:var(--red); color:#fff; font-size:11px; font-weight:700;
-  min-width:18px; height:18px;
-  display:flex; align-items:center; justify-content:center; padding:0 4px;
+  position:absolute; top:-2px; right:-3px;
+  background:var(--red); color:#fff; font-size:11px; font-weight:700; line-height:1;
+  min-width:19px; height:19px; border-radius:50%; box-sizing:border-box;
+  display:flex; align-items:center; justify-content:center; padding:0 3px;
   font-family:var(--sans);
 }
+/* 로고 이미지 + 폴백 */
+.brand .logo-img{height:32px; width:auto; display:block}
+.brand-fallback{display:inline-flex; align-items:center; gap:8px}
+.hide{display:none !important}
 
 /* ===== 뒤로가기 헤더(하위 페이지) ===== */
 .header .back{color:var(--olive-ink)}
@@ -74,7 +78,24 @@ body{
   font-weight:700; font-size:20px; color:var(--olive-ink); letter-spacing:-.5px;
 }
 
-/* ===== 검색창 ===== */
+/* ===== 상단 고정 영역 (헤더+검색창) ===== */
+.topfix{position:sticky; top:0; z-index:25; background:#fff; box-shadow:0 2px 8px rgba(0,0,0,.04)}
+
+/* ===== 검색창 (토글, 즉시 노출) ===== */
+.searchbar{display:none; background:#fff}
+.searchbar.open{display:block; border-bottom:1px solid var(--line)}
+.searchbar .field{
+  display:flex; align-items:center; gap:10px; margin:14px 16px;
+  background:#f3f2ec; border:1.5px solid #e2ded0; padding:14px 16px;
+}
+.searchbar input{
+  flex:1; border:none; background:none; outline:none;
+  font-family:var(--sans); font-size:16px; color:var(--ink);
+}
+.searchbar input::placeholder{color:#9a958a}
+.searchbar .sb-icon{background:none; border:none; padding:0; display:flex; cursor:pointer}
+
+/* ===== 검색창(구버전, 미사용) ===== */
 .search{padding:14px 16px 4px}
 .search .field{
   display:flex; align-items:center; gap:10px;
@@ -95,7 +116,7 @@ body{
 }
 
 /* ===== 히어로 ===== */
-.hero{position:relative; display:block; height:360px; overflow:hidden; background:#e9e6da; text-decoration:none}
+.hero{position:relative; display:block; height:432px; overflow:hidden; background:#e9e6da; text-decoration:none}
 .hero img{width:100%; height:100%; object-fit:cover; display:block}
 .hero .veil{position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,0) 38%,rgba(20,25,10,.72) 100%)}
 .hero .copy{position:absolute; left:22px; right:22px; bottom:22px; color:#fff}
@@ -112,6 +133,23 @@ body{
 .delivery .row strong{font-family:var(--serif); font-weight:700; font-size:20px; color:var(--olive-ink)}
 .delivery p{margin:8px 0 0; color:var(--sub); font-size:15px}
 
+/* ===== 주문 배너 롤링 (문자/전화) ===== */
+.orderbanner{position:relative; height:96px; background:var(--cream); border-bottom:1px solid var(--line); overflow:hidden; touch-action:pan-y; cursor:grab}
+.orderbanner:active{cursor:grabbing}
+.orderbanner .ob-slide{
+  position:absolute; inset:0; display:flex; align-items:center; gap:16px;
+  padding:0 22px; text-decoration:none;
+  opacity:0; visibility:hidden; transition:opacity .4s ease;
+}
+.orderbanner .ob-slide.is-on{opacity:1; visibility:visible}
+.ob-icon{width:60px; height:60px; flex:0 0 auto; display:flex; align-items:center; justify-content:center; color:#fff}
+.ob-icon.sms{background:var(--red)}
+.ob-icon.tel{background:var(--olive)}
+.ob-text{display:flex; flex-direction:column; gap:5px; line-height:1.1}
+.ob-text small{color:var(--sub); font-size:14px; font-weight:500}
+.ob-text b{font-family:var(--serif); font-size:26px; font-weight:700; color:var(--ink); letter-spacing:.5px}
+.ob-text b.num-red{color:var(--red)}
+
 /* ===== 섹션 공통 ===== */
 .section{padding:28px 20px}
 .section > h3{
@@ -124,10 +162,11 @@ body{
 .cat-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px}
 .cat{
   position:relative; aspect-ratio:1/1; overflow:hidden;
-  display:flex; align-items:flex-end; padding:14px; color:#fff; text-decoration:none;
+  display:block; color:#fff; text-decoration:none;
 }
-.cat .cveil{position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(0,0,0,.5))}
-.cat span{position:relative; font-family:var(--serif); font-weight:700; font-size:19px; letter-spacing:-.5px}
+.cat img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block}
+.cat .cveil{position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(0,0,0,.55))}
+.cat span{position:absolute; left:14px; bottom:14px; font-family:var(--serif); font-weight:700; font-size:19px; letter-spacing:-.5px; text-shadow:0 1px 6px rgba(0,0,0,.35)}
 .cat.c1{background:linear-gradient(135deg,#8a6b3a,#5f4a28)}
 .cat.c2{background:linear-gradient(135deg,#5a6b3a,#3d4a24)}
 .cat.c3{background:linear-gradient(135deg,#6b5b46,#463a2c)}
@@ -135,9 +174,9 @@ body{
 
 /* ===== 오늘의 명가 특가 ===== */
 .special{background:var(--olive); padding:30px 20px 34px}
-.special h3{font-family:var(--serif); font-weight:700; font-size:24px; color:#fff; margin:0 0 4px}
+.special h3{font-family:var(--serif); font-weight:700; font-size:24px; color:#fff; margin:0 0 6px; text-align:center}
 .special .desc{color:#d5d0bd; font-size:15px; margin:0 0 18px}
-.timer{text-align:center; margin:0 0 22px}
+.timer{text-align:center; margin:0 0 24px}
 .timer .lb{color:#cfc9b6; font-size:14px; margin-bottom:10px}
 .timer .clock{display:inline-flex; align-items:center; gap:8px; font-family:var(--sans)}
 .timer .u{
@@ -251,9 +290,10 @@ body{
 /* 하단 탭바 자리 확보 */
 .spacer{height:78px}
 
-/* ===== 하단 탭바 ===== */
+/* ===== 하단 탭바 (화면 하단 고정) ===== */
 .bottomnav{
-  position:sticky; bottom:0; left:0; right:0;
+  position:fixed; left:50%; transform:translateX(-50%);
+  bottom:0; width:100%; max-width:430px; z-index:22;
   display:flex; background:#fff; border-top:1px solid var(--line);
   padding:8px 0 max(10px, env(safe-area-inset-bottom));
 }
@@ -264,14 +304,16 @@ body{
 .bottomnav a.on{color:var(--olive-ink); font-weight:700}
 .bottomnav svg{display:block}
 
-/* ===== 햄버거 메뉴 오버레이 ===== */
+/* ===== 햄버거 메뉴 (즉시 노출, 화면 고정, 메뉴 영역만 스크롤) ===== */
 .menu{
-  position:absolute; inset:0; background:#fff; z-index:30;
-  display:flex; flex-direction:column;
-  transform:translateX(-100%); transition:transform .28s ease;
-  overflow-y:auto;
+  position:fixed; top:0; bottom:0; left:50%; transform:translateX(-50%);
+  width:100%; max-width:430px; background:#fff; z-index:40;
+  display:none; flex-direction:column;
+  overflow-y:auto; -webkit-overflow-scrolling:touch; overscroll-behavior:contain;
 }
-.menu.open{transform:translateX(0)}
+.menu.open{display:flex}
+/* 메뉴 열렸을 때 뒤 배경 스크롤 잠금 */
+body.menu-open{overflow:hidden}
 .menu .login{background:var(--cream); padding:18px 20px; border-bottom:1px solid var(--line)}
 .menu .login p{margin:0 0 12px; font-size:15px; color:var(--sub)}
 .menu .login .btns{display:grid; grid-template-columns:1fr 1fr; gap:12px}
