@@ -35,10 +35,7 @@
         <button class="icon-btn js-search-toggle" aria-label="검색 열기">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
         </button>
-        <a class="icon-btn cart" href="#" aria-label="장바구니">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
-          <span class="badge">2</span>
-        </a>
+        <a class="icon-btn cart" href="#" aria-label="장바구니"><img class="cart-ico" src="icon-cart.png" alt=""><span class="badge">2</span></a>
       </div>
     </header>
 
@@ -77,19 +74,11 @@
 
   <!-- ===== 주문 배너 롤링 (문자→전화, 3초 간격) ===== -->
   <section class="orderbanner" id="orderBanner" aria-label="주문 안내">
-    <!-- 1번: 문자 주문 -->
-    <a class="ob-slide is-on" href="sms:010-0000-0000">
-      <span class="ob-icon sms" aria-hidden="true">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>
-      </span>
-      <span class="ob-text"><small>문자로 간편하게 주문해보세요</small><b class="num-red">문자 주문으로 이동</b></span>
+    <a class="ob-slide is-on" href="sms:010-0000-0000" aria-label="문자로 간편 주문">
+      <img src="banner-sms.png" alt="문자로 간편 주문 · 문자 주문으로 이동">
     </a>
-    <!-- 2번: 전화 주문·상담 -->
-    <a class="ob-slide" href="tel:1668-1765">
-      <span class="ob-icon tel" aria-hidden="true">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11 11 0 0 0 3.5.56 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.6a1 1 0 0 1 1 1 11 11 0 0 0 .56 3.5 1 1 0 0 1-.25 1L6.6 10.8Z"/></svg>
-      </span>
-      <span class="ob-text"><small>문의할 사항이 있으신가요? 전화 문의</small><b>1668-1765</b></span>
+    <a class="ob-slide" href="tel:1668-1765" aria-label="전화상담 1668-1765">
+      <img src="banner-tel.png" alt="전화상담 1668-1765 · 평일 9:30~17:30 주말·공휴일 휴무">
     </a>
   </section>
 
@@ -132,6 +121,44 @@
     <div class="prod-grid" id="specialGrid"><!-- JS 렌더 --></div>
   </section>
 
+  <!-- ===== 오늘의 한정 수량 ===== -->
+  <section class="section" style="padding-bottom:0">
+    <h3>오늘의 한정 수량</h3>
+    <p class="desc">선착순 특가 떡을 만나보세요</p>
+  </section>
+  <section class="limited">
+    <div class="stock"><div class="bar"><i></i></div><span class="txt">24개 남았습니다</span></div>
+    <div id="limitedBox"><!-- JS 렌더 --></div>
+  </section>
+
+  <!-- ===== 현재 판매 중인 떡 ===== -->
+  <section class="section" style="padding-bottom:0">
+    <h3>현재 판매 중인 떡</h3>
+    <p class="desc">아끼지 않고 담은 명가의 떡을 만나보세요</p>
+  </section>
+  <section class="home-sale">
+    <div class="prod-grid" id="homeSaleGrid"><!-- JS 렌더 --></div>
+  </section>
+  <a class="btn-line" href="list.html?cate=23">다른 떡 둘러보기</a>
+
+  <!-- ===== 대량주문 안내 ===== -->
+  <section class="bulk">
+    <h3>여럿이 나누는 자리에도<br>정성스럽게 준비합니다</h3>
+    <p class="desc">행사·모임·답례에 필요한 수량과 일정을 안내해 드립니다.</p>
+    <div class="steps">
+      <div class="step"><div class="no">1</div><div class="t">문의 접수</div></div>
+      <div class="step"><div class="no">2</div><div class="t">일정 확인</div></div>
+      <div class="step"><div class="no">3</div><div class="t">주문 안내</div></div>
+    </div>
+    <a class="btn" href="apply.html">대량주문 알아보기</a>
+  </section>
+
+  <!-- ===== 푸터 ===== -->
+  <footer class="site-footer">
+    <img class="logo-img" src="myeongga-logo.webp" alt="명가삼대떡집" onerror="this.style.display='none'">
+    <div class="info">고객센터 1668-1765 · 평일 09:30–17:30<br>점심시간 12:00–13:00 · 주말·공휴일 휴무</div>
+  </footer>
+
   <div class="spacer"></div>
 
   <!-- ===== 하단 탭바 ===== -->
@@ -159,7 +186,7 @@
       </div>
       <div class="header-right">
         <button class="icon-btn" aria-label="검색"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg></button>
-        <a class="icon-btn cart" href="#" aria-label="장바구니"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="badge">2</span></a>
+        <a class="icon-btn cart" href="#" aria-label="장바구니"><img class="cart-ico" src="icon-cart.png" alt=""><span class="badge">2</span></a>
       </div>
     </header>
 
@@ -194,6 +221,11 @@
   renderSpecialGrid('specialGrid', SPECIAL_NOS);
   // 카운트다운
   startCountdown(2*3600 + 36*60 + 1);
+  // 오늘의 한정 수량
+  renderLimited('limitedBox', 66);
+  // 현재 판매 중인 떡 (특가/품절 제외 상위 4개)
+  var homeList = PRODUCTS.filter(function(p){ return SPECIAL_NOS.indexOf(p.no)===-1 && !p.soldout; }).slice(0,4);
+  renderProductGrid('homeSaleGrid', homeList);
 </script>
 </body>
 </html>

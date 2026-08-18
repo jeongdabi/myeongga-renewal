@@ -127,7 +127,6 @@ function productCardHTML(p) {
   }
   var badges = '';
   if (p.soldout) badges = '<span class="tag sold">품절</span>';
-  else if (p.badge && p.badge.length) badges = '<span class="tag">' + p.badge[0] + '</span>';
 
   return '' +
     '<a class="prod' + (p.soldout ? ' is-sold' : '') + '" href="product.html?no=' + p.no + '">' +
@@ -135,9 +134,11 @@ function productCardHTML(p) {
       '<div class="info">' +
         '<p class="name">' + p.name + '</p>' +
         '<div class="price">' +
-          (rate ? '<span class="off">' + rate + '%</span>' : '') +
-          '<span class="now">' + won(p.now) + '</span>' +
           (p.was > p.now ? '<span class="was">' + won(p.was) + '</span>' : '') +
+          '<span class="line">' +
+            (rate ? '<span class="off">' + rate + '%</span>' : '') +
+            '<span class="now">' + won(p.now) + '</span>' +
+          '</span>' +
         '</div>' +
       '</div>' +
     '</a>';
@@ -242,4 +243,26 @@ function bindQty() {
   input.addEventListener('change', function () {
     input.value = clamp(parseInt(input.value, 10));
   });
+}
+
+
+/* ---------- 오늘의 한정 수량 (홈) ---------- */
+function renderLimited(elId, no) {
+  var el = document.getElementById(elId);
+  if (!el) return;
+  var p = findProduct(no);
+  if (!p) return;
+  var img = prodImg(p, 'big');
+  var rate = discountRate(p);
+  var thumb = img
+    ? '<div class="thumb"><img src="' + img + '" alt="' + p.full + '" onerror="this.parentNode.classList.add(\'tone-' + p.tone + '\');this.remove();"></div>'
+    : '<div class="thumb tone-' + p.tone + '"><span>' + p.name + '</span></div>';
+  el.innerHTML =
+    '<a class="big" href="product.html?no=' + p.no + '">' + thumb +
+      '<div class="info"><p class="name">' + p.name + '</p>' +
+      '<div class="price">' +
+        (p.was > p.now ? '<span class="was">' + won(p.was) + '</span>' : '') +
+        (rate ? '<span class="off">' + rate + '%</span>' : '') +
+        '<span class="now">' + won(p.now) + '</span>' +
+      '</div></div></a>';
 }
