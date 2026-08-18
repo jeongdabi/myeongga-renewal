@@ -1,3 +1,4 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
 :root{
   --olive:#3d4526;        /* 진한 올리브 (상단바·특가·브랜드) */
   --olive-2:#4a5330;
@@ -404,3 +405,39 @@ body.menu-open{overflow:hidden}
 
 /* 상세페이지 가격: 정가 윗줄로 */
 .pd-price .was{width:100%; order:-1; margin-bottom:2px}
+
+
+/* ===================================================================
+   2차 수정 (명가삼대떡집)
+   =================================================================== */
+
+/* 장바구니 아이콘 10% 축소 + 뱃지 원형 복원 */
+.cart .cart-ico{width:21px; height:23px}
+.cart .badge{border-radius:50% !important}
+
+/* 주문 배너: 손으로 스크롤(스와이프) 가능 */
+.orderbanner{display:flex; height:auto; aspect-ratio:468/154; overflow-x:auto; overflow-y:hidden;
+  scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; background:var(--cream);
+  cursor:grab; touch-action:pan-x}
+.orderbanner::-webkit-scrollbar{display:none}
+.orderbanner .ob-slide{position:static; opacity:1; visibility:visible; flex:0 0 100%;
+  scroll-snap-align:start; display:block; padding:0; gap:0}
+.orderbanner .ob-slide img{width:100%; height:100%; object-fit:contain; display:block;
+  -webkit-user-drag:none; user-select:none; pointer-events:none}
+
+/* 오늘의 한정 수량: 제목/부제 가운데 정렬 + 게이지 높이 절반 */
+.sec-center{text-align:center}
+.limited .stock .bar{height:11px}
+
+/* 상품명 Pretendard */
+.prod .name, .limited .big .name, .pd-name{font-family:"Pretendard","Noto Sans KR",sans-serif}
+
+/* 대량주문 3단계: 구분선 스타일 + 크림 버튼 (첨부 이미지) */
+.bulk .steps{display:flex; justify-content:stretch; gap:0; margin:24px 0 22px;
+  border-bottom:1px solid rgba(255,255,255,.24)}
+.bulk .step{flex:1; max-width:none; text-align:center; padding:2px 0 18px}
+.bulk .step + .step{border-left:1px solid rgba(255,255,255,.24)}
+.bulk .step .no{width:auto; height:auto; margin:0 0 8px; border:none; background:none;
+  font-family:var(--serif); color:#e9e1c6; font-size:22px; font-weight:700; display:block}
+.bulk .step .t{font-size:15px; font-weight:700; color:#fff}
+.bulk .btn{display:block; width:100%; padding:18px 0; background:var(--cream); color:var(--olive-ink)}

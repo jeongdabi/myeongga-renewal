@@ -2,45 +2,29 @@
    명가삼대떡집 시안 · 공통 스크립트
    ========================================================= */
 
-/* ---------- 주문 배너 롤링 (3초 간격) ---------- */
-/* ---------- 주문 배너 (5초 자동 롤링 + 손 드래그) ---------- */
+/* ---------- 주문 배너 (5초 자동 롤링 + 손 스크롤) ---------- */
 (function () {
   var wrap = document.getElementById('orderBanner');
   if (!wrap) return;
   var slides = wrap.querySelectorAll('.ob-slide');
   if (slides.length < 2) return;
-
-  var cur = 0, timer = null, startX = null, moved = 0;
-
-  function show(i) {
-    slides[cur].classList.remove('is-on');
-    cur = (i % slides.length + slides.length) % slides.length;
-    slides[cur].classList.add('is-on');
+  var idx = 0, timer = null, st = null;
+  function go(n) {
+    idx = (n % slides.length + slides.length) % slides.length;
+    wrap.scrollTo({ left: idx * wrap.clientWidth, behavior: 'smooth' });
   }
-  function start() { stop(); timer = setInterval(function () { show(cur + 1); }, 5000); }
+  function start() { stop(); timer = setInterval(function () { go(idx + 1); }, 5000); }
   function stop() { if (timer) { clearInterval(timer); timer = null; } }
+  // 손으로 스크롤하면 자동 롤링을 잠시 멈췄다가 다시 시작
+  wrap.addEventListener('scroll', function () {
+    stop();
+    clearTimeout(st);
+    st = setTimeout(function () {
+      idx = Math.round(wrap.scrollLeft / wrap.clientWidth);
+      start();
+    }, 700);
+  }, { passive: true });
   start();
-
-  wrap.addEventListener('pointerdown', function (e) {
-    startX = e.clientX; moved = 0; stop();
-  });
-  wrap.addEventListener('pointermove', function (e) {
-    if (startX !== null) moved = e.clientX - startX;
-  });
-  function endDrag() {
-    if (startX === null) return;
-    if (Math.abs(moved) > 40) show(cur + (moved < 0 ? 1 : -1));
-    startX = null;
-    start();
-  }
-  wrap.addEventListener('pointerup', endDrag);
-  wrap.addEventListener('pointercancel', endDrag);
-  wrap.addEventListener('pointerleave', endDrag);
-
-  // 드래그(8px 초과 이동)면 링크 이동 막기 — 탭은 정상 동작
-  wrap.addEventListener('click', function (e) {
-    if (Math.abs(moved) > 8) { e.preventDefault(); }
-  });
 })();
 
 
