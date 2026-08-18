@@ -776,3 +776,76 @@ body.menu-open{overflow:hidden}
    15차 : D-1 레드 + 굵기 +100 + 1px 확대
    =================================================================== */
 .ltime .dday .d{color:var(--red); font-weight:700; font-size:33px}
+
+
+/* ===================================================================
+   16차 : 햄버거 메뉴 헤더 정렬(띠배너 제거) + 전체메뉴 버튼 상하 2px 간격
+   =================================================================== */
+.menu .mgrid{row-gap:2px}
+
+
+/* ===================================================================
+   17차 : 전체메뉴 버튼 카드형(간격) + 드로어 푸터 + 묶음/고객센터 분리
+   =================================================================== */
+/* 메뉴 그리드: 크림 배경 위 흰 카드 + 사이 간격 */
+.menu .mhead{background:var(--cream); padding:22px 20px 12px}
+.menu .mgrid{grid-template-columns:1fr 1fr; gap:4px; padding:0 14px 14px; background:var(--cream); row-gap:4px}
+.menu .mgrid a{background:#fff; border:1px solid var(--line)}
+.menu .mgrid a:nth-child(odd){border-right:1px solid var(--line)}
+
+/* 카테고리 묶음 ↔ 고객센터(푸터) 분리 칸 */
+.menu .menu-footer{margin-top:10px; border-top:1px solid var(--line)}
+
+
+/* ===================================================================
+   18차 : 스크롤바 숨김, 그리드-푸터 흰박스 제거, 카테고리(상위4개) 구분선
+   =================================================================== */
+/* 우측 스크롤바 숨김 (스크롤은 유지) */
+.menu{scrollbar-width:none; -ms-overflow-style:none; overflow-x:hidden}
+.menu::-webkit-scrollbar{display:none; width:0; height:0}
+
+/* 그리드 ↔ 푸터 사이 흰색 박스(여백) 제거 */
+.menu .menu-footer{margin-top:0}
+
+/* 카테고리(전체떡·인기상품·선물답례·대량주문) 아래 구분선 */
+.menu .mgrid .mgrid-sep{grid-column:1 / -1; height:1px; background:#d6d0bf; margin:9px 2px}
+
+
+/* ===================================================================
+   19차 : 햄버거 메뉴 최종 시안 (MOB-햄버거바)
+   =================================================================== */
+.menu .mhead{background:#fff; padding:22px 20px 12px}
+.menu .mgrid{grid-template-columns:1fr 1fr; gap:0; row-gap:0; padding:0; background:#fff}
+.menu .mgrid a{
+  display:flex; align-items:center; justify-content:flex-start; gap:14px;
+  background:#fff; border:none; border-top:1px solid var(--line);
+  padding:24px 20px; font-family:var(--serif); font-weight:600; font-size:21px;
+  color:var(--olive-ink); letter-spacing:-.5px; text-decoration:none;
+}
+.menu .mgrid a:nth-child(odd){border-right:1px solid var(--line)}
+.menu .mgrid a .chev{color:#c3bdad; font-size:18px; font-weight:400}
+/* 카테고리(상위 4개) 아래 여백 (구분칸) */
+.menu .mgrid .mgrid-sep{grid-column:1 / -1; height:16px; margin:0; background:transparent; border:none}
+/* 그리드-푸터 흰 여백 제거 */
+.menu .menu-footer{margin-top:0}
+
+
+/* ===================================================================
+   20차 : 카테고리↔나머지 사이 '색 있는' 구분 밴드 (보더 정상화 위해 그리드 2분할)
+   =================================================================== */
+.menu .mgrid-band{height:20px; background:var(--cream);
+  border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+/* 밴드 아래 그리드 첫 행은 상단 보더 제거(밴드 하단선과 중복 방지) */
+.menu .mgrid-etc a:nth-child(1), .menu .mgrid-etc a:nth-child(2){border-top:none}
+
+
+/* ===================================================================
+   21차 : 카테고리↔나머지 구분 밴드 간격 +3px (20 -> 23)
+   =================================================================== */
+.menu .mgrid-band{height:23px}
+
+
+/* ===================================================================
+   22차 : 구분 밴드 색을 더 또렷하게 (흰색과 구분되도록)
+   =================================================================== */
+.menu .mgrid-band{background:#e8e1cf; border-top:1px solid #d8d1bd; border-bottom:1px solid #d8d1bd}

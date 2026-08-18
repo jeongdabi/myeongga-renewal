@@ -97,6 +97,22 @@
   }
 })();
 
+/* ---------- 메뉴 띠배너: 페이지가 스크롤되어 띠배너가 사라지면 메뉴에서도 숨김 ---------- */
+(function () {
+  var menuTopbar = document.querySelector('#menu .topbar');
+  var pageTopbar = document.querySelector('.topbar'); // 첫 번째 = 페이지 상단 띠배너
+  var openBtn = document.getElementById('openMenu');
+  if (!menuTopbar || !pageTopbar) return;
+  function sync() {
+    var visible = pageTopbar.getBoundingClientRect().bottom > 0;
+    menuTopbar.style.display = visible ? '' : 'none';
+  }
+  window.addEventListener('scroll', sync, { passive: true });
+  window.addEventListener('resize', sync, { passive: true });
+  if (openBtn) openBtn.addEventListener('click', sync);
+  sync();
+})();
+
 /* ---------- 특가 카운트다운 ---------- */
 function startCountdown(seconds) {
   var hh = document.getElementById('hh');
