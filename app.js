@@ -2,28 +2,48 @@
    명가삼대떡집 시안 · 공통 스크립트
    ========================================================= */
 
-/* ---------- 주문 배너 (5초 자동 롤링 + 손 스크롤) ---------- */
+/* ---------- 주문 배너 (자동 롤링 + 손 드래그/스와이프) ---------- */
 (function () {
   var wrap = document.getElementById('orderBanner');
   if (!wrap) return;
   var slides = wrap.querySelectorAll('.ob-slide');
   if (slides.length < 2) return;
   var idx = 0, timer = null, st = null;
+  var down = false, moved = false, startX = 0, startScroll = 0;
   function go(n) {
     idx = (n % slides.length + slides.length) % slides.length;
     wrap.scrollTo({ left: idx * wrap.clientWidth, behavior: 'smooth' });
   }
   function start() { stop(); timer = setInterval(function () { go(idx + 1); }, 5000); }
   function stop() { if (timer) { clearInterval(timer); timer = null; } }
-  // 손으로 스크롤하면 자동 롤링을 잠시 멈췄다가 다시 시작
+  function snap() { idx = Math.round(wrap.scrollLeft / wrap.clientWidth); go(idx); }
   wrap.addEventListener('scroll', function () {
-    stop();
-    clearTimeout(st);
-    st = setTimeout(function () {
-      idx = Math.round(wrap.scrollLeft / wrap.clientWidth);
-      start();
-    }, 700);
+    stop(); clearTimeout(st);
+    st = setTimeout(function () { idx = Math.round(wrap.scrollLeft / wrap.clientWidth); start(); }, 700);
   }, { passive: true });
+  // 마우스로 잡아끌어 넘기기 (터치는 브라우저 기본 스와이프 사용)
+  wrap.addEventListener('pointerdown', function (e) {
+    if (e.pointerType && e.pointerType !== 'mouse') return;
+    down = true; moved = false; startX = e.clientX; startScroll = wrap.scrollLeft;
+    stop(); wrap.classList.add('dragging');
+    try { wrap.setPointerCapture(e.pointerId); } catch (x) {}
+  });
+  wrap.addEventListener('pointermove', function (e) {
+    if (!down) return;
+    var dx = e.clientX - startX;
+    if (Math.abs(dx) > 4) moved = true;
+    wrap.scrollLeft = startScroll - dx;
+  });
+  function up() {
+    if (!down) return;
+    down = false; wrap.classList.remove('dragging'); snap(); start();
+  }
+  wrap.addEventListener('pointerup', up);
+  wrap.addEventListener('pointercancel', up);
+  wrap.addEventListener('pointerleave', up);
+  // PC: 링크 네이티브 드래그(고스트) 차단
+  wrap.addEventListener('dragstart', function (e) { e.preventDefault(); });
+  wrap.addEventListener('click', function (e) { if (moved) { e.preventDefault(); moved = false; } }, true);
   start();
 })();
 
@@ -268,7 +288,6 @@ function renderLimitedTime(elId, nos) {
     html +=
       '<a class="lt-card" href="product.html?no=' + p.no + '">' + thumb +
         '<div class="lt-info">' +
-          '<span class="lt-badge">특가 진행중</span>' +
           '<p class="lt-name">' + p.name + '</p>' +
           '<div class="price">' +
             (p.was > p.now ? '<span class="was">' + won(p.was) + '</span>' : '') +
@@ -277,6 +296,7 @@ function renderLimitedTime(elId, nos) {
               '<span class="now">' + won(p.now) + '</span>' +
             '</span>' +
           '</div>' +
+          '<span class="lt-buy">구매하기 &gt;</span>' +
         '</div>' +
       '</a>';
   }
