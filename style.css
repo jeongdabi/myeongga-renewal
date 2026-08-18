@@ -861,3 +861,49 @@ body.menu-open{overflow:hidden}
    24차 : 구분 밴드 배경 #f7f7ef + 높이 -3px (23 -> 20)
    =================================================================== */
 .menu .mgrid-band{background:#f7f7ef; height:20px}
+
+
+/* ===================================================================
+   25차 : 나머지 메뉴를 1열 풀폭 리스트로 (셰브론 우측 정렬), 카테고리는 2열 유지
+   =================================================================== */
+.menu .mgrid-etc{grid-template-columns:1fr}
+.menu .mgrid-etc a{justify-content:space-between; padding:20px 20px; font-size:18px; font-weight:500}
+.menu .mgrid-etc a:nth-child(odd){border-right:none}
+.menu .mgrid-etc a:nth-child(2){border-top:1px solid var(--line)}
+
+
+/* ===================================================================
+   26차 : 나머지 메뉴를 6px 간격 카드 리스트로 (풀보더)
+   =================================================================== */
+.menu .mgrid-etc{grid-template-columns:1fr; row-gap:6px; padding:8px 0}
+.menu .mgrid-etc a{border:1px solid var(--line)}
+.menu .mgrid-etc a:nth-child(1), .menu .mgrid-etc a:nth-child(2){border-top:1px solid var(--line)}
+.menu .mgrid-etc a:nth-child(odd){border-right:1px solid var(--line)}
+
+
+/* ===================================================================
+   27차 : 나머지 카드 좌우에도 6px 여백
+   =================================================================== */
+.menu .mgrid-etc{padding:8px 6px}
+
+
+/* ===================================================================
+   28차 : 이용안내 카드 배경 #f7f7ef + 카테고리와 간격 6px (밴드 제거)
+   =================================================================== */
+.menu .mgrid-band{display:none}
+.menu .mgrid-etc{padding:6px}
+.menu .mgrid-etc a{background:#f7f7ef}
+
+
+/* ===================================================================
+   29차 : 카드는 흰색, 카드가 놓인 배경 영역을 #f7f7ef
+   =================================================================== */
+.menu .mgrid-etc{background:#f7f7ef}
+.menu .mgrid-etc a{background:#fff}
+
+
+/* ===================================================================
+   30차 : 카테고리 하단 1px 보더 복원 + 이용안내 카드 상하 패딩 -2px
+   =================================================================== */
+.menu .mgrid-cat{border-bottom:1px solid var(--line)}
+.menu .mgrid-etc a{padding:18px 20px}
