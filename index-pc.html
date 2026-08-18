@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1200">
+<title>명가삼대떡집 · PC 시안</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Noto+Serif+KR:wght@500;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="pc.css">
+</head>
+<body>
+
+<!-- ===== 상단 안내바 ===== -->
+<div class="pc-topbar">
+  <div class="wrap">
+    <span class="note">1초 회원가입하고 <b>무료배송 혜택</b> 받기</span>
+    <nav class="util">
+      <a href="#">로그인</a>
+      <a href="#">회원가입</a>
+      <a href="#">주문조회</a>
+      <a href="#">고객센터</a>
+    </nav>
+  </div>
+</div>
+
+<!-- ===== 헤더 ===== -->
+<header class="pc-header">
+  <div class="wrap">
+    <a class="pc-brand" href="index-pc.html">
+      <img class="logo-img" src="myeongga-logo.webp" alt="명가삼대떡집"
+           onerror="this.classList.add('hide'); if(this.nextElementSibling) this.nextElementSibling.classList.remove('hide')">
+      <span class="brand-fallback hide">
+        <svg class="mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M6 14 16 6l10 8"/><path d="M8 14v11h16V14"/><path d="M8 25h16"/><path d="M13 25v-6h6v6"/></svg>
+        명가삼대떡집
+      </span>
+    </a>
+    <nav class="pc-gnb">
+      <a href="list.html?cate=23" class="on">전체 떡</a>
+      <a href="list.html?cate=59">베스트</a>
+      <a href="list.html?cate=gift">선물·답례</a>
+      <a href="apply.html">대량주문</a>
+    </nav>
+    <div class="pc-actions">
+      <div class="pc-search">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+        <input placeholder="찾으시는 떡을 검색해 보세요" aria-label="검색어 입력">
+      </div>
+      <a class="pc-cart" href="#" aria-label="장바구니">
+        <img class="cart-ico" src="icon-cart.png" alt=""><span class="badge">2</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ===== 히어로 ===== -->
+<a class="pc-hero" href="list.html?cate=23">
+  <img src="https://ecimg.cafe24img.com/pg838b47736579015/rhgurwls1/web/product/big/20260427/c14257c61efb9783bcec70bdb2955e29.jpg"
+       alt="정직한 우리 떡" onerror="this.style.display='none'">
+  <div class="veil"></div>
+  <div class="copy">
+    <div class="wrap">
+      <p class="eyebrow">좋은 원물에서 시작합니다</p>
+      <h1>매일 먹어도 좋은<br>정직한 우리 떡</h1>
+      <span class="go">간식부터 선물까지, 필요한 떡을 편하게 골라보세요 ›</span>
+    </div>
+  </div>
+</a>
+
+<!-- ===== 주문 연락 바 ===== -->
+<section class="pc-order" aria-label="주문 안내">
+  <div class="wrap">
+    <a href="sms:010-0000-0000"><img class="ob-ic" src="icon-sms.png" alt=""><span class="ob-tt">문자로 간편 주문</span></a>
+    <a href="tel:1668-1765"><img class="ob-ic" src="icon-tel.png" alt=""><span class="ob-tt">전화상담 1668-1765</span></a>
+  </div>
+</section>
+
+<!-- ===== 카테고리 ===== -->
+<section class="pc-sec">
+  <div class="wrap">
+    <div class="head">
+      <h2>어떤 떡을 찾으세요?</h2>
+      <p class="desc">필요한 자리와 드실 분을 먼저 골라보세요</p>
+    </div>
+    <div class="pc-cat">
+      <a class="c1" href="list.html?cate=snack">
+        <img src="https://ecimg.cafe24img.com/pg838b47736579015/rhgurwls1/web/product/big/20260427/c14257c61efb9783bcec70bdb2955e29.jpg" alt="아침·간식" onerror="this.remove()">
+        <div class="cveil"></div><span>아침·간식</span>
+      </a>
+      <a class="c2" href="list.html?cate=parents">
+        <img src="https://ecimg.cafe24img.com/pg838b47736579015/rhgurwls1/web/product/big/20260722/a4b45cd52fd0165c1aff6b1ddceda563.png" alt="가족과 함께" onerror="this.remove()">
+        <div class="cveil"></div><span>가족과 함께</span>
+      </a>
+      <a class="c3" href="list.html?cate=gift">
+        <img src="https://ecimg.cafe24img.com/pg838b47736579015/rhgurwls1/web/product/big/20260729/f781c51d2153a1fb4a4b7ad2e0e296ef.jpg" alt="선물·답례" onerror="this.remove()">
+        <div class="cveil"></div><span>선물·답례</span>
+      </a>
+      <a class="c4" href="list.html?cate=event">
+        <img src="https://ecimg.cafe24img.com/pg838b47736579015/rhgurwls1/web/product/big/20260714/63aa9ec43153a8ce3d11d5b5848fd3ee.jpg" alt="행사·대량" onerror="this.remove()">
+        <div class="cveil"></div><span>행사·대량</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 한정 시간 특가 ===== -->
+<section class="pc-sec pc-ltime">
+  <div class="wrap">
+    <div class="head">
+      <h2>한정수량 선착순 특가</h2>
+      <div class="dday">
+        <span class="d">D-1</span>
+        <span class="clock"><span class="u" id="hh">02</span><span class="sep">:</span><span class="u" id="mm">36</span><span class="sep">:</span><span class="u" id="ss">01</span></span>
+      </div>
+    </div>
+    <div class="ltime-list" id="ltimeList"><!-- JS 렌더 --></div>
+  </div>
+</section>
+
+<!-- ===== 한정 수량 특가 ===== -->
+<section class="pc-sec pc-lqty">
+  <div class="wrap">
+    <div class="head">
+      <h2>한정 수량 특가</h2>
+      <p class="desc">서두르지 않으면 남은 수량이 없어요!</p>
+    </div>
+    <div class="lq-grid" id="lqtyGrid"><!-- JS 렌더 --></div>
+  </div>
+</section>
+
+<!-- ===== 전체 상품 ===== -->
+<section class="pc-sec">
+  <div class="wrap">
+    <div class="head">
+      <h2>전체 상품</h2>
+      <p class="desc">아끼지 않고 담은 명가의 떡을 만나보세요</p>
+    </div>
+    <div class="pc-grid" id="allGrid"><!-- JS 렌더 --></div>
+    <a class="btn-line" href="list.html?cate=23">다른 떡 둘러보기</a>
+  </div>
+</section>
+
+<!-- ===== 조리방법 안내 배너 (텍스트형) ===== -->
+<section class="pc-sec" style="padding-top:0">
+  <div class="wrap">
+    <a class="pc-cook" href="https://myeonggashop.com/board/product/list.html?board_no=101">
+      <span class="cook-ic" aria-hidden="true">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14"/><rect x="5" y="8" width="9.5" height="8"/><circle cx="18" cy="9.5" r=".9" fill="currentColor" stroke="none"/><circle cx="18" cy="13" r=".9" fill="currentColor" stroke="none"/></svg>
+      </span>
+      <span class="cook-txt">
+        <b>떡 종류별 조리방법 안내</b>
+        <em>명가 제품을 가장 맛있게 먹는 방법</em>
+      </span>
+      <span class="cook-go">보러가기 ›</span>
+    </a>
+  </div>
+</section>
+
+<!-- ===== 유튜브 ===== -->
+<section class="pc-youtube">
+  <div class="yt-wrap">
+    <iframe src="https://www.youtube.com/embed/19sqsWGZh2Y?autoplay=1&mute=1&playsinline=1&loop=1&playlist=19sqsWGZh2Y" title="명가삼대떡집 영상" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+</section>
+
+<!-- ===== 리뷰 ===== -->
+<section class="pc-sec pc-reviews">
+  <div class="wrap">
+    <div class="head"><h2>고객 후기</h2><p class="desc">직접 드셔본 분들의 생생한 이야기</p></div>
+    <div class="rv-grid">
+      <div class="rv-card">
+        <div class="rv-img"><img src="https://ecimg.cafe24img.com/pg838b47736579015/rhgurwls1/web/product/big/20260714/63aa9ec43153a8ce3d11d5b5848fd3ee.jpg" alt="리뷰 사진" onerror="this.parentNode.style.background='#e3b12f';this.remove()"></div>
+        <div class="rv-body">
+          <div class="rv-stars" aria-label="별점 5점">★★★★★</div>
+          <p class="rv-text">가격이랑 배송비 때문에 고민 중이시라면 구성까지 보시면 생각보다 만족하실 거예요 ㅎㅎ 명가삼대떡집 초당옥수수설기는 옥수수가 정말 듬뿍 들어있어요.</p>
+          <div class="rv-prod">
+            <img src="https://ecimg.cafe24img.com/pg838b47736579015/rhgurwls1/web/product/tiny/20260714/63aa9ec43153a8ce3d11d5b5848fd3ee.jpg" alt="" onerror="this.style.background='#e3b12f';this.removeAttribute('src')">
+            <div class="meta"><span class="pn">옥수수 함량 50% 듬뿍 초당옥수수 설기</span><span class="pr">★ 4.9 (590)</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="rv-card">
+        <div class="rv-img"><img src="https://ecimg.cafe24img.com/pg838b47736579015/rhgurwls1/web/product/big/20260722/a4b45cd52fd0165c1aff6b1ddceda563.png" alt="리뷰 사진" onerror="this.parentNode.style.background='#d97a2b';this.remove()"></div>
+        <div class="rv-body">
+          <div class="rv-stars" aria-label="별점 5점">★★★★★</div>
+          <p class="rv-text">아침밥 챙길 시간이 없을 때 쟁여두면 좋겠다 싶어 주문했어요. 밤호박설기 한 조각이면 든든하고 달지 않아 부모님도 좋아하세요.</p>
+          <div class="rv-prod">
+            <img src="https://ecimg.cafe24img.com/pg838b47736579015/rhgurwls1/web/product/tiny/20260722/a4b45cd52fd0165c1aff6b1ddceda563.png" alt="" onerror="this.style.background='#d97a2b';this.removeAttribute('src')">
+            <div class="meta"><span class="pn">해남 밤호박을 듬뿍 넣은 밤호박 설기</span><span class="pr">★ 4.9 (921)</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="rv-card">
+        <div class="rv-img"><img src="https://ecimg.cafe24img.com/pg838b47736579015/rhgurwls1/web/product/big/20260729/f781c51d2153a1fb4a4b7ad2e0e296ef.jpg" alt="리뷰 사진" onerror="this.parentNode.style.background='#d97a2b';this.remove()"></div>
+        <div class="rv-body">
+          <div class="rv-stars" aria-label="별점 5점">★★★★★</div>
+          <p class="rv-text">답례떡으로 주문했는데 포장이 깔끔하고 받으신 분들이 다들 맛있다고 하셨어요. 쌀 카스테라 호박인절미는 부드럽고 촉촉해서 어른들께 특히 반응이 좋았습니다.</p>
+          <div class="rv-prod">
+            <img src="https://ecimg.cafe24img.com/pg838b47736579015/rhgurwls1/web/product/tiny/20260729/f781c51d2153a1fb4a4b7ad2e0e296ef.jpg" alt="" onerror="this.style.background='#d97a2b';this.removeAttribute('src')">
+            <div class="meta"><span class="pn">명가삼대떡집 쌀 카스테라 호박인절미</span><span class="pr">★ 4.8 (312)</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a class="review-policy" href="#">ⓘ 리뷰 정책 안내</a>
+  </div>
+</section>
+
+<!-- ===== 푸터 ===== -->
+<footer class="pc-footer">
+  <div class="wrap">
+    <div class="f-brand">
+      <img class="logo-img" src="myeongga-logo.webp" alt="명가삼대떡집" onerror="this.style.display='none'">
+      <div class="info">고객센터 1668-1765 · 평일 09:30–17:30<br>점심시간 12:00–13:00 · 주말·공휴일 휴무<br>세대를 잇는 정직한 손맛, 명가삼대떡집</div>
+    </div>
+    <div class="f-links">
+      <div class="f-col">
+        <h4>상품</h4>
+        <a href="list.html?cate=23">전체 떡</a>
+        <a href="list.html?cate=59">베스트</a>
+        <a href="list.html?cate=gift">선물·답례</a>
+        <a href="apply.html">대량주문</a>
+      </div>
+      <div class="f-col">
+        <h4>고객지원</h4>
+        <a href="#">이용안내</a>
+        <a href="#">자주묻는 질문</a>
+        <a href="#">1:1 문의</a>
+        <a href="#">떡 조리 방법</a>
+      </div>
+      <div class="f-col">
+        <h4>명가</h4>
+        <a href="#">명가 이야기</a>
+        <a href="#">공지사항</a>
+        <a href="#">리뷰</a>
+        <a href="#">문자 주문</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="products.js"></script>
+<script src="app.js"></script>
+<script>
+  renderLimitedTime('ltimeList', LTIME_NOS);
+  startCountdown(2*3600 + 36*60 + 1);
+  renderLimitedQty('lqtyGrid', LQTY_NOS);
+  var allList = PRODUCTS.filter(function(p){ return p.img && !p.soldout; }).slice(0,4);
+  renderProductGrid('allGrid', allList);
+</script>
+</body>
+</html>
