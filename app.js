@@ -250,3 +250,73 @@ function renderLimited(elId, no) {
         '<span class="now">' + won(p.now) + '</span>' +
       '</div></div></a>';
 }
+
+
+/* ---------- 한정 시간 특가 (세로 리스트) ---------- */
+function renderLimitedTime(elId, nos) {
+  var el = document.getElementById(elId);
+  if (!el) return;
+  var html = '';
+  for (var i = 0; i < nos.length; i++) {
+    var p = findProduct(nos[i]);
+    if (!p) continue;
+    var img = prodImg(p, 'medium');
+    var rate = discountRate(p);
+    var thumb = img
+      ? '<div class="lt-thumb"><img src="' + img + '" alt="' + p.full + '" onerror="this.parentNode.classList.add(\'tone-' + p.tone + '\');this.remove();"></div>'
+      : '<div class="lt-thumb tone-' + p.tone + '"><span>' + p.name + '</span></div>';
+    html +=
+      '<a class="lt-card" href="product.html?no=' + p.no + '">' + thumb +
+        '<div class="lt-info">' +
+          '<span class="lt-badge">특가 진행중</span>' +
+          '<p class="lt-name">' + p.name + '</p>' +
+          '<div class="price">' +
+            (p.was > p.now ? '<span class="was">' + won(p.was) + '</span>' : '') +
+            '<span class="line">' +
+              (rate ? '<span class="off">' + rate + '%</span>' : '') +
+              '<span class="now">' + won(p.now) + '</span>' +
+            '</span>' +
+          '</div>' +
+        '</div>' +
+      '</a>';
+  }
+  el.innerHTML = html;
+}
+
+/* ---------- 한정 수량 특가 (2x2 + 롤링 배지) ---------- */
+function renderLimitedQty(elId, nos) {
+  var el = document.getElementById(elId);
+  if (!el) return;
+  var html = '';
+  for (var i = 0; i < nos.length; i++) {
+    var p = findProduct(nos[i]);
+    if (!p) continue;
+    var img = prodImg(p, 'medium');
+    var rate = discountRate(p);
+    var save = p.was - p.now;
+    var stock = p.stock || 100;
+    var inner = img
+      ? '<img src="' + img + '" alt="' + p.full + '" onerror="this.parentNode.classList.add(\'tone-' + p.tone + '\');this.remove();">'
+      : '<span class="ph-name">' + p.name + '</span>';
+    html +=
+      '<a class="lq-card" href="product.html?no=' + p.no + '">' +
+        '<div class="lq-thumb' + (img ? '' : ' tone-' + p.tone) + '">' + inner + '</div>' +
+        '<div class="lq-roll"><div class="lq-track">' +
+          '<span>' + stock + '개 남음</span>' +
+          '<span>지금 사면 ' + won(save) + ' 할인</span>' +
+          '<span>' + stock + '개 남음</span>' +
+        '</div></div>' +
+        '<div class="lq-info">' +
+          '<p class="name">' + p.name + '</p>' +
+          '<div class="price">' +
+            (p.was > p.now ? '<span class="was">' + won(p.was) + '</span>' : '') +
+            '<span class="line">' +
+              (rate ? '<span class="off">' + rate + '%</span>' : '') +
+              '<span class="now">' + won(p.now) + '</span>' +
+            '</span>' +
+          '</div>' +
+        '</div>' +
+      '</a>';
+  }
+  el.innerHTML = html;
+}

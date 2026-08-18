@@ -12,7 +12,7 @@ var IMG_BASE = 'https://ecimg.cafe24img.com/pg838b47736579015/rhgurwls1/web/prod
 function prodImg(p, size) {
   if (!p || !p.img) return null;
   size = size || 'medium';
-  return IMG_BASE + '/' + size + '/' + p.img.date + '/' + p.img.hash;
+  return IMG_BASE + '/big/' + p.img.date + '/' + p.img.hash;  // 라이브 확인: big 경로만 안정적
 }
 
 // 그라데이션 색상 팔레트 (이미지 없는 상품용)
@@ -20,25 +20,25 @@ var THUMB_TONES = ['corn', 'pumpkin', 'green', 'brown', 'rice'];
 
 var PRODUCTS = [
   { no:190, name:'초당옥수수 설기', full:'옥수수 함량 50% 듬뿍 초당옥수수 설기',
-    was:28000, now:18500, tone:'corn', badge:['베스트'],
+    was:28000, now:18500, tone:'corn', badge:['베스트'], stock:100,
     slug:'옥수수-함량-50-듬뿍-초당옥수수-설기',
     img:{date:'20260714', hash:'63aa9ec43153a8ce3d11d5b5848fd3ee.jpg'},
     opts:['초당옥수수 설기 100g x 10개입 (1kg)','초당옥수수 설기 100g x 20개입 (2kg)'] },
 
   { no:192, name:'밤호박 설기', full:'해남 밤호박을 듬뿍 넣은 밤호박 설기',
-    was:26900, now:18500, tone:'pumpkin', badge:['베스트'],
+    was:26900, now:18500, tone:'pumpkin', badge:['베스트'], stock:80,
     slug:'해남-밤호박을-듬뿍-넣은-밤호박-설기',
     img:{date:'20260722', hash:'a4b45cd52fd0165c1aff6b1ddceda563.png'},
     opts:['밤호박 설기 100g x 10개 (1kg)','밤호박 설기 100g x 20개 (2kg)'] },
 
   { no:66, name:'쌀 카스테라 호박인절미', full:'명가삼대떡집 쌀 카스테라 호박인절미',
-    was:22000, now:16900, tone:'pumpkin', badge:['당일한정'],
+    was:22000, now:16900, tone:'pumpkin', badge:['당일한정'], stock:60,
     slug:'명가삼대떡집-쌀-카스테라-호박인절미',
     img:{date:'20260729', hash:'f781c51d2153a1fb4a4b7ad2e0e296ef.jpg'},
     opts:['쌀 카스테라 호박인절미 1박스 (800g)','쌀 카스테라 호박인절미 2박스 (1.6kg)'] },
 
   { no:40, name:'쑥인절미 + 콩고물 증정', full:'명가삼대떡집 쑥인절미 + 콩고물 증정',
-    was:17400, now:12500, tone:'green', badge:['베스트'],
+    was:17400, now:12500, tone:'green', badge:['베스트'], stock:45,
     slug:'명가삼대떡집-쑥인절미-콩고물-증정',
     img:{date:'20260427', hash:'c14257c61efb9783bcec70bdb2955e29.jpg'},
     opts:['쑥인절미 1kg + 콩고물 150g 증정','쑥인절미 2kg + 콩고물 150g 증정'] },
@@ -50,7 +50,8 @@ var PRODUCTS = [
 
   { no:50, name:'쫀득쫀득 콩달떡', full:'통팥 앙금이 듬뿍 들어간 쫀득쫀득 콩달떡',
     was:16500, now:12600, tone:'brown', badge:[],
-    slug:'통팥-앙금이-듬뿍-들어간-쫀득쫀득-콩달떡', img:null,
+    slug:'통팥-앙금이-듬뿍-들어간-쫀득쫀득-콩달떡',
+    img:{date:'20260427', hash:'d91077b37cf8ac7ee5e3b698a67e41a8.gif'},
     opts:['콩달떡 10개입','콩달떡 20개입'] },
 
   { no:61, name:'대추고 수제 약밥', full:'수제로 만들어 더 맛있는 대추고 약밥',
@@ -96,6 +97,8 @@ var PRODUCTS = [
 
 // 홈 "오늘의 명가 특가"에 노출할 상품번호 (편집기에서 관리)
 var SPECIAL_NOS = [190, 192, 66, 40];
+var LTIME_NOS = [190, 192];
+var LQTY_NOS = [190, 192, 66, 40];
 
 // 상품번호로 조회
 function findProduct(no) {

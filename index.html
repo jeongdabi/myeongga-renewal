@@ -75,10 +75,10 @@
   <!-- ===== 주문 배너 롤링 (문자→전화, 3초 간격) ===== -->
   <section class="orderbanner" id="orderBanner" aria-label="주문 안내">
     <a class="ob-slide is-on" href="sms:010-0000-0000" aria-label="문자로 간편 주문">
-      <img src="banner-sms.png" alt="문자로 간편 주문 · 문자 주문으로 이동">
+      <img class="ob-ic" src="icon-sms.png" alt=""><span class="ob-tt">문자로 간편 주문</span>
     </a>
     <a class="ob-slide" href="tel:1668-1765" aria-label="전화상담 1668-1765">
-      <img src="banner-tel.png" alt="전화상담 1668-1765 · 평일 9:30~17:30 주말·공휴일 휴무">
+      <img class="ob-ic" src="icon-tel.png" alt=""><span class="ob-tt">전화상담 1668-1765</span>
     </a>
   </section>
 
@@ -93,8 +93,8 @@
         <div class="cveil"></div><span>아침·간식</span>
       </a>
       <a class="cat c2" href="list.html?cate=parents">
-        <img src="https://ecimg.cafe24img.com/pg838b47736579015/rhgurwls1/web/product/big/20260722/a4b45cd52fd0165c1aff6b1ddceda563.png" alt="부모님께" onerror="this.remove()">
-        <div class="cveil"></div><span>부모님께</span>
+        <img src="https://ecimg.cafe24img.com/pg838b47736579015/rhgurwls1/web/product/big/20260722/a4b45cd52fd0165c1aff6b1ddceda563.png" alt="가족과 함께" onerror="this.remove()">
+        <div class="cveil"></div><span>가족과 함께</span>
       </a>
       <a class="cat c3" href="list.html?cate=gift">
         <img src="https://ecimg.cafe24img.com/pg838b47736579015/rhgurwls1/web/product/big/20260729/f781c51d2153a1fb4a4b7ad2e0e296ef.jpg" alt="선물·답례" onerror="this.remove()">
@@ -107,51 +107,74 @@
     </div>
   </section>
 
-  <!-- ===== 오늘의 명가 특가 ===== -->
-  <section class="special">
-    <h3>오늘의 명가 특가</h3>
-    <div class="timer">
-      <div class="lb">종료까지 남은 시간</div>
-      <div class="clock">
-        <span class="u" id="hh">02</span><span class="sep">:</span>
-        <span class="u" id="mm">36</span><span class="sep">:</span>
-        <span class="u" id="ss">01</span>
-      </div>
+  <!-- ===== 한정 시간 특가 ===== -->
+  <section class="ltime">
+    <h3>한정 시간 특가</h3>
+    <div class="dday">
+      <span class="d">D-1</span>
+      <span class="clock"><span class="u" id="hh">02</span><span class="sep">:</span><span class="u" id="mm">36</span><span class="sep">:</span><span class="u" id="ss">01</span></span>
     </div>
-    <div class="prod-grid" id="specialGrid"><!-- JS 렌더 --></div>
+    <div class="ltime-list" id="ltimeList"><!-- JS 렌더 --></div>
   </section>
 
-  <!-- ===== 오늘의 한정 수량 ===== -->
-  <section class="section sec-center" style="padding-bottom:0">
-    <h3>오늘의 한정 수량</h3>
-    <p class="desc">선착순 특가 떡을 만나보세요</p>
+  <!-- ===== 한정 수량 특가 ===== -->
+  <section class="section lqty-head sec-center">
+    <h3 class="gold">한정 수량 특가</h3>
+    <p class="desc">서두르지 않으면 남은 수량이 없어요!</p>
   </section>
-  <section class="limited">
-    <div class="stock"><div class="bar"><i></i></div><span class="txt">24개 남았습니다</span></div>
-    <div id="limitedBox"><!-- JS 렌더 --></div>
+  <section class="lqty">
+    <div class="lq-grid" id="lqtyGrid"><!-- JS 렌더 --></div>
   </section>
 
-  <!-- ===== 현재 판매 중인 떡 ===== -->
-  <section class="section" style="padding-bottom:0">
-    <h3>현재 판매 중인 떡</h3>
+  <!-- ===== 전체 상품 ===== -->
+  <section class="section allprod" style="padding-bottom:0">
+    <h3>전체 상품</h3>
     <p class="desc">아끼지 않고 담은 명가의 떡을 만나보세요</p>
   </section>
   <section class="home-sale">
-    <div class="prod-grid" id="homeSaleGrid"><!-- JS 렌더 --></div>
+    <div class="prod-grid" id="allGrid"><!-- JS 렌더 --></div>
   </section>
   <a class="btn-line" href="list.html?cate=23">다른 떡 둘러보기</a>
 
-  <!-- ===== 대량주문 안내 ===== -->
-  <section class="bulk">
-    <h3>여럿이 나누는 자리에도<br>정성스럽게 준비합니다</h3>
-    <p class="desc">행사·모임·답례에 필요한 수량과 일정을 안내해 드립니다.</p>
-    <div class="steps">
-      <div class="step"><div class="no">1</div><div class="t">문의 접수</div></div>
-      <div class="step"><div class="no">2</div><div class="t">일정 확인</div></div>
-      <div class="step"><div class="no">3</div><div class="t">주문 안내</div></div>
+  <!-- ===== 조리방법 안내 배너 ===== -->
+  <a class="cook-banner" href="https://myeonggashop.com/board/product/list.html?board_no=101">
+    <img src="cook-banner.jpg" alt="떡 종류별 조리방법 안내 · 명가 제품을 가장 맛있게 먹는 방법">
+  </a>
+
+  <!-- ===== 유튜브 영상 ===== -->
+  <section class="youtube">
+    <div class="yt-wrap">
+      <iframe src="https://www.youtube.com/embed/19sqsWGZh2Y" title="명가삼대떡집 영상" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
-    <a class="btn" href="apply.html">대량주문 알아보기</a>
   </section>
+
+  <!-- ===== 리뷰 ===== -->
+  <div class="reviews" id="reviews">
+    <div class="rv-card">
+      <div class="rv-img"><img src="https://ecimg.cafe24img.com/pg838b47736579015/rhgurwls1/web/product/big/20260714/63aa9ec43153a8ce3d11d5b5848fd3ee.jpg" alt="리뷰 사진" onerror="this.parentNode.style.background='#e3b12f';this.remove()"></div>
+      <div class="rv-body">
+        <div class="rv-stars" aria-label="별점 5점">★★★★★</div>
+        <p class="rv-text">가격이랑 배송비 때문에 고민 중이시라면 구성까지 보시면 생각보다 만족하실 거예요 ㅎㅎ 명가삼대떡집 초당옥수수설기는 옥수수가 정말 듬뿍 들어있어요.</p>
+        <div class="rv-prod">
+          <img src="https://ecimg.cafe24img.com/pg838b47736579015/rhgurwls1/web/product/tiny/20260714/63aa9ec43153a8ce3d11d5b5848fd3ee.jpg" alt="" onerror="this.style.background='#e3b12f';this.removeAttribute('src')">
+          <div class="meta"><span class="pn">옥수수 함량 50% 듬뿍 초당옥수수 설기</span><span class="pr">★ 4.9 (590)</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="rv-card">
+      <div class="rv-img"><img src="https://ecimg.cafe24img.com/pg838b47736579015/rhgurwls1/web/product/big/20260722/a4b45cd52fd0165c1aff6b1ddceda563.png" alt="리뷰 사진" onerror="this.parentNode.style.background='#d97a2b';this.remove()"></div>
+      <div class="rv-body">
+        <div class="rv-stars" aria-label="별점 5점">★★★★★</div>
+        <p class="rv-text">아침밥 챙길 시간이 없을 때 쟁여두면 좋겠다 싶어 주문했어요. 밤호박설기 한 조각이면 든든하고 달지 않아 부모님도 좋아하세요.</p>
+        <div class="rv-prod">
+          <img src="https://ecimg.cafe24img.com/pg838b47736579015/rhgurwls1/web/product/tiny/20260722/a4b45cd52fd0165c1aff6b1ddceda563.png" alt="" onerror="this.style.background='#d97a2b';this.removeAttribute('src')">
+          <div class="meta"><span class="pn">해남 밤호박을 듬뿍 넣은 밤호박 설기</span><span class="pr">★ 4.9 (921)</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a class="review-policy" href="#">ⓘ 리뷰 정책 안내</a>
+  <a class="btn-line" href="#">리뷰 모두 보기</a>
 
   <!-- ===== 푸터 ===== -->
   <footer class="site-footer">
@@ -217,15 +240,15 @@
 <script src="products.js"></script>
 <script src="app.js"></script>
 <script>
-  // 특가 그리드 렌더 (SPECIAL_NOS는 products.js에서 관리)
-  renderSpecialGrid('specialGrid', SPECIAL_NOS);
-  // 카운트다운
+  // 한정 시간 특가 (세로 리스트)
+  renderLimitedTime('ltimeList', LTIME_NOS);
+  // 카운트다운 (D-1 표기 + H:M:S)
   startCountdown(2*3600 + 36*60 + 1);
-  // 오늘의 한정 수량
-  renderLimited('limitedBox', 66);
-  // 현재 판매 중인 떡 (특가/품절 제외 상위 4개)
-  var homeList = PRODUCTS.filter(function(p){ return p.img && !p.soldout; }).slice(0,4);
-  renderProductGrid('homeSaleGrid', homeList);
+  // 한정 수량 특가 (롤링 배지)
+  renderLimitedQty('lqtyGrid', LQTY_NOS);
+  // 전체 상품 (이미지 보유 상품)
+  var allList = PRODUCTS.filter(function(p){ return p.img && !p.soldout; }).slice(0,4);
+  renderProductGrid('allGrid', allList);
 </script>
 </body>
 </html>
